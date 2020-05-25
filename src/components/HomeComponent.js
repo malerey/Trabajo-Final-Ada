@@ -5,7 +5,7 @@ const ContainerCardRow = styled.section`
 display: flex`
 
 const Pelicula = styled.article`
-  display: flex;
+  ${'' /* display: flex; */}
 
 `
 
