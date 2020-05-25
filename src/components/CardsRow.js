@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CardRow = () => {
+const CardsRow = () => {
     return(
         <div>Hola</div>
     )
 }
 
-export default CardRow;
+export default CardsRow;
