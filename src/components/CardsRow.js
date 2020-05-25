@@ -14,13 +14,13 @@ const Card = styled.div`
   }
 `;
 
-const CardsRow = ({ title, cardHome }) => {
-  console.log(cardHome);
+const CardsRow = ({ title, info }) => {
+  console.log(info);
   return (
     <>
       <div>{title}</div>
       <CardContainer>
-        {cardHome.map(
+        {info.map(
           (card, i) =>
             i <= 4 && (
               <Card key={card.id}>

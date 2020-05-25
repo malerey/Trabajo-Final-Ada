@@ -8,28 +8,31 @@ ${'' /* display: flex */}
 `
 
 
-
-
-
 const HomeComponent = () => {
-  const [cardHome, setCardHome] = useState([]);
+  const [peliculasHome, setPeliculasHome] = useState([]);
+  const [seriesHome, setSeriesHome] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/trending/tv/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
+      `https://api.themoviedb.org/3/trending/movies/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
     )
       .then((res) => res.json())
-      .then((data) => setCardHome(data.results));
+      .then((data) => setPeliculasHome(data.results));
+      fetch(
+        `https://api.themoviedb.org/3/trending/tv/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
+      )
+        .then((res) => res.json())
+        .then((data) => setSeriesHome(data.results));
   }, []);
 
-  console.log(cardHome);
+  console.log(peliculasHome);
 
 
 
   return (
     <ContainerCardsRow>
-      <CardsRow id={"movies"} title={"Películas que son tendencia"} cardHome={cardHome} />
-      <CardsRow id={"tv"} title={"Series que son tendencia"} cardHome={cardHome} />
+      <CardsRow title={"Películas que son tendencia"} info={peliculasHome} />
+      <CardsRow title={"Series que son tendencia"} info={seriesHome} />
      </ContainerCardsRow>
   );
 };
