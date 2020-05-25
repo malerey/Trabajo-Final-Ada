@@ -1,45 +1,36 @@
 import React, { useState, useEffect } from "react";
+import CardsRow from './CardsRow'
 import styled from 'styled-components';
 
-const ContainerCardRow = styled.section`
-display: flex`
 
-const Pelicula = styled.article`
-  ${'' /* display: flex; */}
-
+const ContainerCardsRow = styled.section`
+${'' /* display: flex */}
 `
 
+
+
+
+
 const HomeComponent = () => {
-  const [peliculasHome, setPeliculasHome] = useState([]);
+  const [cardHome, setCardHome] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/trending/movies/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
+      `https://api.themoviedb.org/3/trending/tv/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
     )
       .then((res) => res.json())
-      .then((data) => setPeliculasHome(data.results));
+      .then((data) => setCardHome(data.results));
   }, []);
 
-  console.log(peliculasHome);
+  console.log(cardHome);
 
 
 
   return (
-    <ContainerCardRow>
-      {peliculasHome.map((pelicula, i) => (
-          i <= 4 && (
-            <Pelicula key={pelicula.id}>
-              <img 
-              alt={pelicula.title}
-              src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} 
-
-              />
-              <p>{pelicula.title}</p>
-            </Pelicula>
-            )
-   
-      ))}
-    </ContainerCardRow>
+    <ContainerCardsRow>
+      <CardsRow id={"movies"} title={"Películas que son tendencia"} cardHome={cardHome} />
+      <CardsRow id={"tv"} title={"Series que son tendencia"} cardHome={cardHome} />
+     </ContainerCardsRow>
   );
 };
 
