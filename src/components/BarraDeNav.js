@@ -9,6 +9,7 @@ import HomeComponent from "./HomeComponent";
 import VideoComponent from "./VideoComponent";
 import TvComponent from "./TvComponent";
 import SearchComponent from "./SearchComponent";
+import DisplayCardsFull from "./DisplayCardsFull";
 
 const Nav = styled.nav`
   display: flex;
@@ -45,6 +46,7 @@ const BarraDeNav = () => {
         <Link to="/search">
           <Search size="30" />
         </Link>
+        <p>Búsqueda...</p>
         {/* <input type="text"></input> */}
         {/* hacer el valor inicial cuando haga el estado del input como: "busqueda..." */}
       </Nav>
@@ -54,6 +56,7 @@ const BarraDeNav = () => {
         <Route exact path="/video" component={VideoComponent} />
         <Route exact path="/tv" component={TvComponent} />
         <Route exact path="/search" component={SearchComponent} />
+        <Route exact path="/displaycardsfull" component={DisplayCardsFull} />
 
         {/* {paginacion[page]} */}
       </Switch>
