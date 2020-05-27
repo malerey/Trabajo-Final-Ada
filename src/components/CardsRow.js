@@ -1,7 +1,6 @@
 import React from "react";
-// import DisplayCardsFull from "./DisplayCardsFull";
 import styled from "styled-components";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const CardContainer = styled.article`
@@ -27,20 +26,24 @@ const Card = styled.div`
   }
 `;
 
-const handleClick = (e) => {
+const handleClick = (title, name, e) => {
   // console.log(e.target.value);
   console.log(e)
+  console.log(title)
+  console.log(name)
 };
 
-const CardsRow = ({ title, info }) => {
-  console.log(title)
+const CardsRow = ({ info, title, name }) => {
+  
     return (
     <>
-      <Router>
+      
         <Link to="/displaycardsfull">
-        <h2 onClick={handleClick}>{title}</h2>
-        </Link>
-        </Router>
+        <div>
+        <h2 onClick={(e) => handleClick(title, name, e)}>{title}</h2>
+        </div>
+        
+        
         <CardContainer>
           {info.map(
             (card, i) =>
@@ -52,10 +55,11 @@ const CardsRow = ({ title, info }) => {
                   />
                   <p>{card.title}</p>
                 </Card>
+                
               )
           )}
         </CardContainer>
-      
+        </Link>
     </>
   );
 };
