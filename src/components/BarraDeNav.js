@@ -4,7 +4,7 @@ import { Video } from "@styled-icons/feather/Video";
 import { Tv } from "@styled-icons/feather/Tv";
 import { Search } from "@styled-icons/feather/Search";
 import styled from "styled-components";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, withRouter } from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import VideoComponent from "./VideoComponent";
 import TvComponent from "./TvComponent";
@@ -52,14 +52,13 @@ const BarraDeNav = () => {
       </Nav>
 
       <Switch>
-        <Route exact path="/" component={HomeComponent} />
-        <Route exact path="/video" component={VideoComponent} />
-        <Route exact path="/tv" component={TvComponent} />
-        <Route exact path="/search" component={SearchComponent} />
-        <Route exact path="/displaycardsfull" component={DisplayCardsFull} />
-
-        {/* {paginacion[page]} */}
+        <Route exact path="/" component={HomeComponent}></Route> 
+        <Route exact path="/video" component={VideoComponent}></Route> 
+        <Route exact path="/tv" component={TvComponent}></Route>
+        <Route exact path="/search" component={SearchComponent}></Route>
+        <Route exact path="/displaycardsfull" component={DisplayCardsFull}></Route>
       </Switch>
+      {/* {paginacion[page]} */}
     </Router>
   );
 };

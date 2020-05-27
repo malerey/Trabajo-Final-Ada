@@ -28,14 +28,18 @@ const Card = styled.div`
 `;
 
 const handleClick = (e) => {
-  console.log("hola ");
+  // console.log(e.target.value);
+  console.log(e)
 };
 
 const CardsRow = ({ title, info }) => {
+  console.log(title)
     return (
     <>
       <Router>
-        <Link to="/displaycardsfull">{title}</Link>
+        <Link to="/displaycardsfull">
+        <h2 onClick={handleClick}>{title}</h2>
+        </Link>
         </Router>
         <CardContainer>
           {info.map(

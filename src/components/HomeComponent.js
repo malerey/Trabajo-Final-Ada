@@ -7,6 +7,7 @@ const ContainerCardsRow = styled.section`
 ${'' /* display: flex */}
 a {
     text-decoration: none;
+    
   }
 `
 
@@ -30,10 +31,12 @@ const HomeComponent = () => {
 
   console.log(peliculasHome);
 
+  
+
   return (
     <ContainerCardsRow>
-      <CardsRow title={"Películas que son tendencia"} info={peliculasHome} />
-      <CardsRow title={"Series que son tendencia"} info={seriesHome} />
+      <CardsRow name={"movies"} title={"Películas que son tendencia"} info={peliculasHome} />
+      <CardsRow name={"series"} title={"Series que son tendencia"} info={seriesHome} />
     </ContainerCardsRow>
   );
 };
