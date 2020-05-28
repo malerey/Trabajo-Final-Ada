@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import CardsRow from './CardsRow'
-import styled from 'styled-components';
-
+import CardsRow from "./CardsRow";
+import styled from "styled-components";
 
 const ContainerCardsRow = styled.section`
-${'' /* display: flex */}
-a {
-    text-decoration: none;
     
+  a {
+    text-decoration: none;
   }
-`
-
+`;
 
 const HomeComponent = () => {
   const [peliculasHome, setPeliculasHome] = useState([]);
@@ -29,14 +26,19 @@ const HomeComponent = () => {
       .then((data) => setSeriesHome(data.results));
   }, []);
 
-  console.log(peliculasHome);
-
   
-
   return (
     <ContainerCardsRow>
-      <CardsRow name={"movies"} title={"Películas que son tendencia"} info={peliculasHome} />
-      <CardsRow name={"series"} title={"Series que son tendencia"} info={seriesHome} />
+      <CardsRow
+        name={"movies"}
+        title={"Películas que son tendencia"}
+        info={peliculasHome}
+      />
+        <CardsRow
+          name={"series"}
+          title={"Series que son tendencia"}
+          info={seriesHome}
+        />
     </ContainerCardsRow>
   );
 };

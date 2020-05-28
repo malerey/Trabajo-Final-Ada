@@ -10,7 +10,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  ${"" /* color: rgb(220, 221, 222); */}
+  color: rgb(220, 221, 222);
   width: 100%;
   height: auto;
   padding: 10px 20px;
