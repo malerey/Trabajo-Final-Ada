@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
 const CardContainer = styled.article`
   display: flex;
-
 `;
 const Card = styled.div`
   width: 80%;
@@ -26,24 +24,22 @@ const Card = styled.div`
   }
 `;
 
-const handleClick = (title, name, e) => {
-  // console.log(e.target.value);
-  console.log(e)
-  console.log(title)
-  console.log(name)
-};
-
 const CardsRow = ({ info, title, name }) => {
-  
-    return (
+  const [value, setValue] = useState([]);
+
+  const handleClick = (name) => {
+    setValue(name);
+  };
+
+  console.log(value)
+
+  return (
     <>
-      
-        <Link to="/displaycardsfull">
+      <Link to="/displaycardsfull">
         <div>
-        <h2 onClick={(e) => handleClick(title, name, e)}>{title}</h2>
+          <h2 onClick={() => handleClick(name)}>{title}</h2>
         </div>
-        
-        
+
         <CardContainer>
           {info.map(
             (card, i) =>
@@ -55,11 +51,10 @@ const CardsRow = ({ info, title, name }) => {
                   />
                   <p>{card.title}</p>
                 </Card>
-                
               )
           )}
         </CardContainer>
-        </Link>
+      </Link>
     </>
   );
 };
