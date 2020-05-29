@@ -15,7 +15,8 @@ const HomeComponent = () => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/trending/movies/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
+      `https://api.themoviedb.org/3/trending/movie/week?api_key=f56caaebb5b600d34fe93fe163881e2c
+      `
     )
       .then((res) => res.json())
       .then((data) => setPeliculasHome(data.results));
@@ -30,12 +31,12 @@ const HomeComponent = () => {
   return (
     <ContainerCardsRow>
       <CardsRow
-        name={"movies"}
+        name={"movie"}
         title={"Películas que son tendencia"}
         info={peliculasHome}
       />
         <CardsRow
-          name={"series"}
+          name={"tv"}
           title={"Series que son tendencia"}
           info={seriesHome}
         />

@@ -6,7 +6,6 @@ const CardContainer = styled.article`
   display: flex;
 `;
 const Card = styled.div`
-  width: 80%;
   height: auto;
   margin-bottom: 20px;
   padding: 0px 4px;
@@ -25,21 +24,16 @@ const Card = styled.div`
 `;
 
 const CardsRow = ({ info, title, name }) => {
-  const [value, setValue] = useState([]);
-
-  const handleClick = (name) => {
-    setValue(name);
-  };
-
-  console.log(value)
-
+  console.log(info)
+  
   return (
     <>
-      <Link to="/displaycardsfull">
-        <div>
-          <h2 onClick={() => handleClick(name)}>{title}</h2>
-        </div>
+      <Link to={`/${name}`}>
 
+        <div>
+          <h2>{title}</h2>
+        </div>
+    
         <CardContainer>
           {info.map(
             (card, i) =>
