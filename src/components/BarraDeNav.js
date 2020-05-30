@@ -15,17 +15,13 @@ const Nav = styled.nav`
   height: auto;
   padding: 10px 20px;
   text-decoration: none;
+  margin: 0;
+  background-color: rgb(35, 39, 42);
+  font-weight: 300;
 `;
 
 const BarraDeNav = () => {
-  // const [page, setPage] = useState("home");
 
-  // const paginacion = {
-  //   home: <HomeComponent />,
-  //   video: <VideoComponent />,
-  //   tv: <TvComponent />,
-  //   search: <SearchComponent />
-  // }
   return (
     <Nav>
       <Link to="/">

@@ -9,7 +9,6 @@ const Card = styled.div`
   height: auto;
   margin-bottom: 20px;
   padding: 0px 4px;
-  flex: 1;
   overflow: hidden;
   img {
     width: 80%;
@@ -25,30 +24,26 @@ const Card = styled.div`
 
 const CardsRow = ({ info, title, name }) => {
   console.log(info)
-  
   return (
     <>
       <Link to={`/${name}`}>
-
-        <div>
           <h2>{title}</h2>
-        </div>
-    
-        <CardContainer>
-          {info.map(
-            (card, i) =>
-              i <= 4 && (
-                <Card key={card.id}>
-                  <img
-                    alt={card.title}
-                    src={`https://image.tmdb.org/t/p/w500${card.poster_path}`}
-                  />
-                  <p>{card.title}</p>
-                </Card>
-              )
-          )}
-        </CardContainer>
       </Link>
+
+      <CardContainer>
+        {info.map(
+          (card, i) =>
+            i <= 4 && (
+              <Card key={card.id}>
+                <img
+                  alt={card.title}
+                  src={`https://image.tmdb.org/t/p/w500${card.poster_path}`}
+                />
+                <p>{card.title ? card.title : card.name}</p>
+              </Card>
+            )
+        )}
+      </CardContainer>
     </>
   );
 };

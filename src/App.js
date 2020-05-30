@@ -7,12 +7,12 @@ import VideoComponent from "./components/VideoComponent";
 import TvComponent from "./components/TvComponent";
 import SearchComponent from "./components/SearchComponent";
 import DisplayCardsFull from "./components/DisplayCardsFull";
+  
 
 const App = () => {
 
   return (
-    <>
-      <Router>
+     <Router>
         <BarraDeNav/>
           
           <Switch>
@@ -23,7 +23,6 @@ const App = () => {
             <Route path="/search" component={SearchComponent}></Route>
           </Switch>
          </Router>
-    </>
   );
 };
 

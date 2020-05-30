@@ -3,24 +3,24 @@ import styled from "styled-components";
 import ShowCard from "./ShowCard";
 import { useParams } from "react-router-dom";
 
-const CardContainer = styled.section`
-padding: 10px;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-// height: 100%;
-  // flex-basis: 80%;
-`;
+// const CardContainer = styled.section`
+// padding: 10px;
+// // justify-content: space-between;
+// // height: 100%;
+// `;
 
 const ShowCardContainer = styled.div`
- 
+margin-bottom: 20px;
+padding: 0px 4px;
+  flex: 1;
+
 `;
 
 const DisplayCardsFull = () => {
   const category = useParams().category;
   const [cardsInfo, setCardsInfo] = useState([]);
 
-  console.log(category);  
+  console.log(category);
 
   useEffect(() => {
     fetch(
@@ -28,15 +28,14 @@ const DisplayCardsFull = () => {
     )
       .then((res) => res.json())
       .then((data) => setCardsInfo(data.results));
-  }, [category]);
+  }, []);
 
-  console.log(cardsInfo)
   return (
-    <CardContainer>
-      <ShowCardContainer>
-        <ShowCard info={cardsInfo} />
-      </ShowCardContainer>
-    </CardContainer>
+    // <CardContainer>
+      <>
+        <ShowCard category={category} info={cardsInfo} />
+      </>
+    // </CardContainer>
   );
 };
 

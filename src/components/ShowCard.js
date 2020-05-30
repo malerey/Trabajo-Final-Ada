@@ -1,17 +1,31 @@
-import React, {useEffect, useState} from "react";
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import styled from "styled-components";
+
+const DivWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-center;
+  padding: 10px;
+`;
+
+const Title = styled.div`
+  margin-bottom: 50px;
+`;
 
 const Card = styled.div`
- display: block;
   height: auto;
   margin-bottom: 20px;
   padding: 0px 4px;
-  flex: 1;
   overflow: hidden;
+  width: 20%;
+  height: 20;
+
   img {
-    width: 50%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
   }
+
   :hover {
     img {
       transform: scale(1.1);
@@ -20,23 +34,29 @@ const Card = styled.div`
   }
 `;
 
-const ShowCard = ({info}) => {
 
-    return (
+
+const ShowCard = ({ info }) => {
+  const category = useParams().category
+
+  return (
     <>
-     {info.map(
-            (card, i) =>
-              (
-                <Card key={card.id}>
-                  <img
-                    alt={card.title}
-                    src={`https://image.tmdb.org/t/p/w500${card.poster_path}`}
-                  />
-                  <p>{card.title}</p>
-                </Card>
-              )
-          )}
-
+    <Title>
+      {category === "movie" ? "Películas que son tendencia" : "Series que son tendencia"}
+    </Title>
+    <DivWrap>
+      {info.map((card, i) => (
+        <Card key={card.id}>
+          <Link to={`/${id}`}>
+          <img
+            alt={card.title}
+            src={`https://image.tmdb.org/t/p/w500${card.poster_path}`}
+          />
+          <p>{card.title ? card.title : card.name}</p>
+          </Link>
+        </Card>
+      ))}
+    </DivWrap>
     </>
   );
 };
