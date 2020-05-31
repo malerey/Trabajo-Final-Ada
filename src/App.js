@@ -7,6 +7,9 @@ import VideoComponent from "./components/VideoComponent";
 import TvComponent from "./components/TvComponent";
 import SearchComponent from "./components/SearchComponent";
 import DisplayCardsFull from "./components/DisplayCardsFull";
+import CardInfoFull from "./components/CardInfoFull"
+
+
   
 
 const App = () => {
@@ -17,6 +20,7 @@ const App = () => {
           
           <Switch>
             <Route exact path="/" component={HomeComponent}></Route>
+            <Route path="/:category/:id" component={CardInfoFull}></Route> 
             <Route path="/:category" component={DisplayCardsFull}></Route>
             <Route path="/video" component={VideoComponent}></Route>
             <Route path="/tv" component={TvComponent}></Route>

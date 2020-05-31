@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
 
 const DivWrap = styled.div`
@@ -7,6 +7,16 @@ const DivWrap = styled.div`
   flex-wrap: wrap;
   align-items: space-center;
   padding: 10px;
+  a {
+    text-decoration: none;
+    margin: 0;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 0px 4px;
+    overflow: hidden;
+    width: 20%;
+    height: 20;
+  }
 `;
 
 const Title = styled.div`
@@ -14,13 +24,6 @@ const Title = styled.div`
 `;
 
 const Card = styled.div`
-  height: auto;
-  margin-bottom: 20px;
-  padding: 0px 4px;
-  overflow: hidden;
-  width: 20%;
-  height: 20;
-
   img {
     width: 80%;
     height: 80%;
@@ -34,29 +37,29 @@ const Card = styled.div`
   }
 `;
 
-
-
 const ShowCard = ({ info }) => {
-  const category = useParams().category
-
+  const category = useParams().category;
+  
   return (
     <>
-    <Title>
-      {category === "movie" ? "Películas que son tendencia" : "Series que son tendencia"}
-    </Title>
-    <DivWrap>
-      {info.map((card, i) => (
-        <Card key={card.id}>
-          <Link to={`/${id}`}>
-          <img
-            alt={card.title}
-            src={`https://image.tmdb.org/t/p/w500${card.poster_path}`}
-          />
-          <p>{card.title ? card.title : card.name}</p>
+      <Title>
+        {category === "movie"
+          ? "Películas que son tendencia"
+          : "Series que son tendencia"}
+      </Title>
+      <DivWrap>
+        {info.map((card) => (
+          <Link to={`${category}/${card.id}`} key={card.id}>
+            <Card key={card.id}>
+              <img
+                alt={card.title}
+                src={`https://image.tmdb.org/t/p/w500${card.poster_path}`}
+              />
+              <p>{card.title ? card.title : card.name}</p>
+            </Card>
           </Link>
-        </Card>
-      ))}
-    </DivWrap>
+        ))}
+      </DivWrap>
     </>
   );
 };

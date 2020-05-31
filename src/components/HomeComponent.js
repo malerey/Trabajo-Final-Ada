@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CardsRow from "./CardsRow";
 import styled from "styled-components";
+import CardInfoFull from './CardInfoFull';
+import {useHistory} from 'react-router-dom';
 
 const ContainerCardsRow = styled.section`
   background-color: rgb(35, 39, 42);
@@ -14,9 +16,9 @@ const ContainerCardsRow = styled.section`
 const HomeComponent = () => {
   const [peliculasHome, setPeliculasHome] = useState([]);
   const [seriesHome, setSeriesHome] = useState([]);
-  // const [title, setTitle] = useState([])
-  // crear un estado con el titulo para despues hacer una funcion que se lo pase a display cards
-  // o sino fijarme de usar props o algo asi
+ 
+  // SOLUCION ACA
+  // GUARDO TODA LA INFO EN UN ESTADO QUE SEA UN ARRAY Y CADA OCSA COMPLETE UN CAMPO
 
   useEffect(() => {
     fetch(
@@ -31,8 +33,7 @@ const HomeComponent = () => {
       .then((data) => setSeriesHome(data.results));
   }, []);
 
-   console.log(peliculasHome)
-   console.log(seriesHome)
+
   return (
     <ContainerCardsRow>
       <CardsRow

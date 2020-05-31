@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const CardContainer = styled.article`
   display: flex;
@@ -23,7 +23,6 @@ const Card = styled.div`
 `;
 
 const CardsRow = ({ info, title, name }) => {
-  console.log(info)
   return (
     <>
       <Link to={`/${name}`}>
