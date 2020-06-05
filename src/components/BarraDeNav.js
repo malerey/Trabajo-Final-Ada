@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Home } from "@styled-icons/feather/Home";
 import { Video } from "@styled-icons/feather/Video";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CardContainer = styled.article`
   display: flex;
@@ -23,16 +23,19 @@ const Card = styled.div`
 `;
 
 const CardsRow = ({ info, title, name }) => {
+  const category = name;
+  console.log(category)
+
   return (
     <>
       <Link to={`/${name}`}>
-          <h2>{title}</h2>
+        <h2>{title}</h2>
       </Link>
-
+      {/* ACA ME FALTA TAL VEZ RENDERIZAR UN COMPONENTE EN VREZ DE ESTO, Y TRATAR DE CON CONDITIONAL RENDERING UQE ME MUESTRE EL DE 4 NOMAS */}
       <CardContainer>
-        {info.map(
-          (card, i) =>
-            i <= 4 && (
+        {info.map((card, i) => 
+          i <= 4 && (
+            <Link to={`${category}/${card.id}`} key={card.id}>
               <Card key={card.id}>
                 <img
                   alt={card.title}
@@ -40,7 +43,8 @@ const CardsRow = ({ info, title, name }) => {
                 />
                 <p>{card.title ? card.title : card.name}</p>
               </Card>
-            )
+            </Link>
+          )
         )}
       </CardContainer>
     </>

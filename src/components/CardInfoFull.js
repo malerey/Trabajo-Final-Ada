@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 const CardInfoFull = () => {
 const id = useParams().id; 
 const category = useParams().category;
-const[ infoId, setInfoId ] = useState({})
-
+const[ infoId, setInfoId ] = useState([])
 
     useEffect(() => {
       fetch(
@@ -13,7 +12,7 @@ const[ infoId, setInfoId ] = useState({})
       )
         .then((res) => res.json())
         .then((data) => setInfoId(data));
-  
+
     }, []);
   return (
     <>

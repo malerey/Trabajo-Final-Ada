@@ -20,7 +20,6 @@ const DisplayCardsFull = () => {
   const category = useParams().category;
   const [cardsInfo, setCardsInfo] = useState([]);
 
-
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/trending/${category}/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
