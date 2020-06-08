@@ -1,51 +1,55 @@
 import React, { useState, useEffect } from "react";
 import CardsRow from "./CardsRow";
 import styled from "styled-components";
-import CardInfoFull from './CardInfoFull';
-import {useHistory} from 'react-router-dom';
+import CardInfoFull from "./CardInfoFull";
+import { useHistory } from "react-router-dom";
 
 const ContainerCardsRow = styled.section`
   background-color: rgb(35, 39, 42);
   color: rgb(220, 221, 222);
-    padding: 20px;
+  padding: 20px;
   a {
     text-decoration: none;
   }
 `;
 
 const HomeComponent = () => {
-  const [peliculasHome, setPeliculasHome] = useState([]);
+  const [moviesHome, setMoviesHome] = useState([]);
   const [seriesHome, setSeriesHome] = useState([]);
- 
-  // SOLUCION ACA
-  // GUARDO TODA LA INFO EN UN ESTADO QUE SEA UN ARRAY Y CADA OCSA COMPLETE UN CAMPO
+
+
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/trending/movie/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
-    )
-      .then((res) => res.json())
-      .then((data) => setPeliculasHome(data.results));
-    fetch(
-      `https://api.themoviedb.org/3/trending/tv/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
-    )
-      .then((res) => res.json())
-      .then((data) => setSeriesHome(data.results));
+    const fetchMovies = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
+      );
+      const movies = await res.json();
+      setMoviesHome(movies.results);
+    };
+    const fetchSeries = async () => {
+      const data = await fetch(
+        `https://api.themoviedb.org/3/trending/tv/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
+      );
+      const series = await data.json();
+      setSeriesHome(series.results);
+    };
+    fetchMovies();
+    fetchSeries();
   }, []);
-
 
   return (
     <ContainerCardsRow>
       <CardsRow
-        name={"movie"}
+        category={"movie"}
         title={"Películas que son tendencia"}
-        info={peliculasHome}
+        info={moviesHome}
       />
-        <CardsRow
-          name={"tv"}
-          title={"Series que son tendencia"}
-          info={seriesHome}
-        />
+      <CardsRow
+        category={"tv"}
+        title={"Series que son tendencia"}
+        info={seriesHome}
+      />
     </ContainerCardsRow>
   );
 };

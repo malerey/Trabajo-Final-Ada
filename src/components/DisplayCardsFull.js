@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import ShowCard from "./ShowCard";
+import ShowCards from "./ShowCards";
 import { useParams, useHistory } from "react-router-dom";
 
 // const CardContainer = styled.section`
@@ -19,19 +19,28 @@ import { useParams, useHistory } from "react-router-dom";
 const DisplayCardsFull = () => {
   const category = useParams().category;
   const [cardsInfo, setCardsInfo] = useState([]);
+  const [pageNumbers, setPageNumbers] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/trending/${category}/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
-    )
-      .then((res) => res.json())
-      .then((data) => setCardsInfo(data.results));
-
+    const fetchApi = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/${category}/popular/?api_key=f56caaebb5b600d34fe93fe163881e2c&page=${page}`
+      );
+      const data = await res.json();
+      setCardsInfo(data.results);
+      setPageNumbers(data.total_pages);
+    };
+    fetchApi();
   }, []);
 
-
-  return <ShowCard info={cardsInfo}/>;
+  return (
+    <ShowCards
+      postsPerPage={cardsInfo.length}
+      pageNumbers={pageNumbers}
+      info={cardsInfo}
+    />
+  );
 };
 
 export default DisplayCardsFull;
-

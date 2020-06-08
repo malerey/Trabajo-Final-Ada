@@ -18,7 +18,6 @@ const Card = styled.div`
 
 const LinkIndividualInfo = ({ info }) => {
   const category = useParams().category;
-  
   return (
     <>
       {info.map((card) => (

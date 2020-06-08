@@ -22,16 +22,19 @@ const Card = styled.div`
   }
 `;
 
-const CardsRow = ({ info, title, name }) => {
-  const category = name;
-  console.log(category)
+const CardsRow = ({ info, title, category }) => {
+
+  // const [paginacion, setPaginacion] = {
+  //   [
+
+  //   ]
+  // }
 
   return (
     <>
-      <Link to={`/${name}`}>
+      <Link to={`/${category}`}>
         <h2>{title}</h2>
       </Link>
-      {/* ACA ME FALTA TAL VEZ RENDERIZAR UN COMPONENTE EN VREZ DE ESTO, Y TRATAR DE CON CONDITIONAL RENDERING UQE ME MUESTRE EL DE 4 NOMAS */}
       <CardContainer>
         {info.map((card, i) => 
           i <= 4 && (
