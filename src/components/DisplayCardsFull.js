@@ -25,7 +25,7 @@ const DisplayCardsFull = () => {
   useEffect(() => {
     const fetchApi = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/${category}/popular/?api_key=f56caaebb5b600d34fe93fe163881e2c&page=${page}`
+        `https://api.themoviedb.org/3/trending/${category}/week?api_key=f56caaebb5b600d34fe93fe163881e2c&page=${page}`
       );
       const data = await res.json();
       setCardsInfo(data.results);
@@ -33,7 +33,7 @@ const DisplayCardsFull = () => {
     };
     fetchApi();
   }, []);
-
+  console.log(pageNumbers);
   return (
     <ShowCards
       postsPerPage={cardsInfo.length}
