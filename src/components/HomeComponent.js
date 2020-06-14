@@ -20,6 +20,7 @@ const HomeComponent = () => {
 
 
   useEffect(() => {
+    // buen uso de async await!
     const fetchMovies = async () => {
       const res = await fetch(
         `https://api.themoviedb.org/3/trending/movie/week?api_key=f56caaebb5b600d34fe93fe163881e2c`
@@ -40,6 +41,7 @@ const HomeComponent = () => {
 
   return (
     <ContainerCardsRow>
+    {/* Muy buen resuelta la logica en CardsRow! */}
       <CardsRow
         category={"movie"}
         title={"Películas que son tendencia"}

@@ -13,6 +13,11 @@ const ArrowContainer = styled.li`
   height: auto;
 `;
 
+// Te quedó muy bien este componente! Vas por un buen camino para hacerlo funcional. 
+// No dejes de escribirme si queres seguirlo
+// Por otro lado, podes chusmear algunas librerias que simplifcan este tipo de componentes
+// Por ejemplo, Material UI: https://material-ui.com/components/pagination/
+
 const Pagination = ({ pageNumbers, paginate }) => {
   const pageNumbersArray = [];
 

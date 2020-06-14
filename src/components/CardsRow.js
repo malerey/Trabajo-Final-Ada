@@ -30,6 +30,10 @@ const CardsRow = ({ info, title, category }) => {
   //   ]
   // }
 
+
+  // Card deberia ser un componente aparte (fijate que en el modelo final se usa en mas cosas que solo series o peliculas, 
+  // como el cast por ejemplo)
+  
   return (
     <>
       <Link to={`/${category}`}>

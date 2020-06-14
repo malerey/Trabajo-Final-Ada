@@ -32,7 +32,15 @@ const DisplayCardsFull = () => {
       setPageNumbers(data.total_pages);
     };
     fetchApi();
+    // el array al final del useEffect dice si este fetch tiene que hacerse varias veces o solo una
+    // si esta vacio, se hace una sola vez. 
+    // en este caso esta vacio, por eso si vemos primero series y despues vamos a peliculas, 
+    // vamos a seguir viendo la info de las series. 
+    // en este array deberia estar incluido "category" para resolver ese problema
+    // asi 
+    // }, [category]);
   }, []);
+  // recorda siempre borrar los console log 
   console.log(pageNumbers);
   return (
     <ShowCards
